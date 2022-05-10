@@ -1,9 +1,6 @@
 # Functions go here
 
 # Puts series of symbols at start and end of text (for empasis)
-from turtle import heading
-
-
 def statement_generator(text, decoration):
 
     # Make string with five characters
@@ -24,16 +21,16 @@ def instructions():
 
     statement_generator("Instructions / Information", "=")
     print()
-    print("Please choose a data type (image / text / integer", "=")
+    print("Write information on the factors calculator", "=")
     print()
-    print("This program assumes that images are being represented in 24 bit colour (ie: 24 bits per pixel). For text, we assume that ascii encoding is being used (8 bits per character).")
+    print("Write another line of instruction.")
     print()
-    print("Complete as many calculations as necessary, pressing <enter> at the end of each calculation or any key to quit.")
+    print("Write another line of instruction.")
     print()
     return ""
 
 
-# checks input is a number more than a given value
+# checks input is a number between 1 and 200 (yet to edit)
 def num_check(question, low):
     valid = False
     while not valid:
@@ -59,7 +56,8 @@ def num_check(question, low):
 
 
 # gets factors, returns a sorted list
-
+def get_factors(to_factor):
+    print("just filling this out to stop the angry-ness")
 
 # Main Routine goes here
 
@@ -104,4 +102,14 @@ while keep_going == "":
     
     # Output factors and comment
     statement_generator(heading, "*")
-    
+    print()
+    print(factor_list)
+    print(comment)
+
+    print()
+    keep_going = input("Press <enter> to continue or any key to quit ")
+    print()
+
+print()
+print("Thank you for using the factors calculator")
+print()
