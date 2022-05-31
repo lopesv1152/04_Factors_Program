@@ -30,12 +30,12 @@ def instructions():
     return ""
 
 
-# checks input is a number between 1 and 200 (yet to edit)
+# checks input is a number between 1 and 200 (yet to edit)???
 def num_check(question, low):
     valid = False
     while not valid:
 
-        error = "Please enter a number that is more than " "(or equal to) {}".format(low)
+        error = "Please enter a number between 1 and 200".format(low)
 
         try:
 
@@ -43,7 +43,7 @@ def num_check(question, low):
             response = int(input(question))
 
             # checks number is more than zero
-            if response >= low:
+            if response >=1 <=200:
                 return response
             
             # outputs error if input is invalid
