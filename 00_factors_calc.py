@@ -21,42 +21,59 @@ def instructions():
 
     statement_generator("Instructions / Information", "=")
     print()
-    print("Write information on the factors calculator", "=")
+    print("Enter an integer (a number which does not have a decimal part) between 1 and 200.")
     print()
-    print("Write another line of instruction.")
+    print("The calculator will list the factors of your integer in ascending order. The calculator will also specify if it is UNITY (has only one factor), a prime number (only divisible by one and itself), or a perfect square.")
     print()
-    print("Write another line of instruction.")
+    print("After completing your calculation, press <enter> to do more calculations or any key to quit the program.")
     print()
     return ""
 
 
-# checks input is a number more than a given value
-def num_check(question, low):
-    valid = False
-    while not valid:
+# checks input is between 1 and 200
+def num_check(question):
+    try:
+        # ask user to enter a number
+        response = int(input(question))
 
-        error = "Please enter a number that is more than " "(or equal to) {}".format(low)
-
-        try:
-
-            # ask user to enter a number
-            response = int(input(question))
-
-            # checks number is more than zero
-            if 1>=response>=200:
-                return response
-            
-            # outputs error if input is invalid
+        # checks number is more than zero
+        if 1 <= response <= 200:
+            return response
+        
+        # outputs error if input is invalid
+        else:
+            if response <= 0:
+                print("Please enter an integer that is more than (or equal to) 1")
             else:
-                print(error)
-                print()
+                print("Please enter an integer that is less than (or equal to) 200")
+            print()
 
-        except ValueError:
-            print(error)
+    except ValueError:
+        print("Please enter an integer between 1 and 200")
+    return ""
 
 # gets factors, returns a sorted list
 def get_factors(to_factor):
-    print("just filling this out to stop the angry-ness")
+    comment = ""
+    factor_list = []
+
+    # Check if the value is 1
+    if to_factor == 1:
+        return "1 is UNITY! It only has one factor, itself."  
+    
+    for number in range(1, to_factor+1):
+        if to_factor%number == 0:
+            factor_list.append(number)
+    comment = "{}".format(factor_list)
+
+    # comments for square / primes
+    if len(factor_list) == 2:
+        comment += " {} is a prime number.".format(to_factor)
+    elif len(factor_list) % 2 == 1:
+        comment += " {} is a perfect square".format(to_factor)
+
+    return comment
+
 
 # Main Routine goes here
 
@@ -72,38 +89,14 @@ if first_time == "":
 # Loop to allow multiple calculations per session
 keep_going = ""
 while keep_going == "":
+    # ask user for an integer (must be between 1 and 200)
+    var_to_factor = num_check("Enter an integer: ")
+    if var_to_factor != "":
 
-    comment = ""
-
-    # ask user for number to be factored...
-    var_to_factor = num_check("Number? ")
-
-    if var_to_factor !=1:
-        factor_list = get_factors(var_to_factor)
-    else:
-        factor_list = ""
-        comment = "One is UNITY! It only has one factor. Itself :)"
-    
-    # comments for square / primes
-    if len(factor_list) == 2:
-        comment = "{} is a prime number.".format(var_to_factor)
-    elif len(factor_list) % 2 == 1:
-        comment = "{} is a perfect square".format(var_to_factor)
-    
-    # output factors and comment
-
-    # Generate heading...
-    if var_to_factor == 1:
-        heading = "One is special..."
-    
-    else:
-        heading = "Factors of {}".format(var_to_factor)
-    
-    # Output factors and comment
-    statement_generator(heading, "*")
-    print()
-    print(factor_list)
-    print(comment)
+        print()
+        # find factors from integer
+        comment = get_factors(var_to_factor)
+        print(comment)
 
     print()
     keep_going = input("Press <enter> to continue or any key to quit ")
