@@ -74,7 +74,6 @@ def get_factors(to_factor):
 
     return comment
 
-
 # Main Routine goes here
 
 # Heading
@@ -97,10 +96,10 @@ while keep_going == "":
         # find factors from integer
         comment = get_factors(var_to_factor)
         print(comment)
-
-    print()
-    keep_going = input("Press <enter> to continue or any key to quit ")
-    print()
+    
+        print()
+        keep_going = input("Press <enter> to continue or any key to quit ")
+        print()
 
 print()
 print("Thank you for using the factors calculator")
